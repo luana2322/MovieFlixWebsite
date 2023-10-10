@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="shortcut icon" th:href="@{img/film-reel.png}" type="image/x-icon">
+   <title>MovieFlix</title>
+    <link rel="stylesheet" th:href="@{/static/css/login.css}">
+        <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}"/>
+</head>
+<body >
+<div class="container">
+<div class="swap-button">
+    <div id="button-before"></div>
+    <a class="button" th:href="@{/login}" onclick="login()">Login</a>
+    <a class="button" th:href="@{/register}" onclick="regiter()">Register</a>
+</div>
+ <div id="form1">
+        <form class="user" th:action="@{/do-login}" method="post">
+        <h1>Login</h1>
+        <input type="text" name="username" class="input-text" placeholder="User Name" required>
+        <input type="password" name="password" class="input-text" placeholder="Password" required>
+        <div class="remember-me">
+            <input type="checkbox">
+            <p>Nhớ mật khẩu</p>
+        </div>
+        <button type="submit" class="submit">LOGIN</button>
+         </form>
+        <div class="social-icon">
+            <a ><i class="fa-brands fa-facebook-f"></i></a>
+            <a ><i class="fa-brands fa-google"></i></a>
+            <a ><i class="fa-brands fa-twitter"></i></a>
+        </div>
+       
+        </div>
+<!-- end login -->
+<div id="form2">
+            <form class="user" th:action="@{/register-new}"  th:object="${newdto}"
+                  method="post" >
+            <h1>Register</h1>
+            <input type="text" name="username"   th:field="*{username}" class="input-text" placeholder="User Name" required>
+            <input type="password" name="password"  th:field="*{password}" class="input-text" placeholder="Password" required>
+            <input type="password" name="repeatpassword" th:field="*{repeatpassword}" class="input-text" placeholder="Confirm Password" required>
+               <div class="remember-me">
+            <input type="checkbox">
+            <p>Tôi đồng ý với điều khoản và dịch vụ</p>
+        </div>
+        <button type="submit" class="submit">REGISTER</button>
+        </form>
+        <div class="social-icon">
+            <a ><i class="fa-brands fa-facebook-f"></i></a>
+            <a ><i class="fa-brands fa-google"></i></a>
+            <a ><i class="fa-brands fa-twitter"></i></a>
+        </div>
+            
+        </div>
+<!-- end register -->
+<script>
+var x=document.getElementById("button-before")
+var y=document.getElementById("form1")
+var z=document.getElementById("form2")
+
+function login(){
+x.style.left="0px";
+z.style.left="550px";
+y.style.left="4.375em";
+}
+function regiter(){
+x.style.left="100px";
+y.style.left="-400px";
+z.style.left="4.375em";
+}
+
+
+</script>
+
+
+</div>
+
+</body>
+</html>

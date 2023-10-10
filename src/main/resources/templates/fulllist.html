@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}"/>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="shortcut icon" th:href="@{/img/film-reel.png}" type="image/x-icon">
+    <title>MovieFlix</title>
+    <link rel="stylesheet" th:href="@{/css/main1.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <div th:replace="fragment::topbar" ></div>
+
+
+    <div class="main">
+        <label for="top-hide" id="checkmain">
+            <ion-icon name="menu-outline" ></ion-icon>
+        </label>
+
+        <input type="checkbox" hidden  id="top-hide" name="accept" value="yes" >
+
+
+        <label for="top-hide"  class="overlay"></label>
+        <div class="mainleft">
+            <div class="left">
+
+
+
+
+                <div class="navchil"><a href="" class="menu"><ion-icon name="home-outline"></ion-icon> <p>Trang chủ</p> </a></div>
+                <div class="navchil"><a th:href="@{/fulllist}" class="menu"><ion-icon name="film-outline"></ion-icon> <p>Danh Sách</p> </a></div>
+                <div class="navchil"><a href="" class="menu"><ion-icon name="videocam-outline"></ion-icon> <p>Phim Lẻ</p></a></div>
+                <div class="navchil"><button href="" class="sub-btn"><ion-icon name="menu-outline"></ion-icon><p>Thể Loại</p><ion-icon name="chevron-forward-outline" class="dropdowicon" id="dropdowicon"></ion-icon></button>
+
+                    <div class="dropdow">
+                        <a href="#anime" class="sub-item"><i class="fa-solid fa-circle"></i>Anime</a>
+                        <a href="#hanhdong" class="sub-item"><i class="fa-solid fa-circle"></i>Hành Động</a>
+                        <a href="" class="sub-item"><i class="fa-solid fa-circle"></i>Hài Hước</a>
+                        <a href="#kichtinh" class="sub-item"><i class="fa-solid fa-circle"></i>Kịch Tính</a>
+                        <a href="" class="sub-item"><i class="fa-solid fa-circle"></i>Kinh Dị</a>
+                    </div>
+                </div>
+                <!-- end div navchil -->
+                <!-- start div navchil -->
+                <div class="navchil" id="dropdown1">
+                    <button class="sub-btn"><a  class="menu"><ion-icon name="calendar-outline"></ion-icon> <p>Năm</p> <ion-icon name="chevron-forward-outline" class="dropdowicon" id="dropdowicon"></ion-icon></a>
+                    </button>
+                    <div class="dropdow">
+                        <a th:href="@{/year1/{start}/{end}(start=2019 , end=2023)}"  class="sub-item"><i class="fa-solid fa-circle"></i><span>2019-Now</span> </a>
+                        <a th:href="@{/year1/{start}/{end}(start=2015 , end=2019)}"  class="sub-item"><i class="fa-solid fa-circle"></i><span>2015-2019</span></a>
+                        <a th:href="@{/year1/{start}/{end}(start=2010 , end=2015)}"  class="sub-item"><i class="fa-solid fa-circle"></i><span>2010-2015</span></a>
+                        <a th:href="@{/year1/{start}/{end}(start=2005 , end=2010)}"  class="sub-item"><i class="fa-solid fa-circle"></i><span>2005-2010</span></a>
+                        <a th:href="@{/year1/{start}/{end}(start=2000 , end=2005)}"  class="sub-item"><i class="fa-solid fa-circle"></i><span>2000-2005</span></a>
+                    </div>
+                </div>
+                <!-- end div navchil -->
+                <!-- start div navchil -->
+                <div class="navchil" id="dropdown2">
+                    <button class="sub-btn"><a  class="menu"><ion-icon name="reader-outline"></ion-icon> <p>Quốc Gia</p> <ion-icon name="chevron-forward-outline" class="dropdowicon" id="dropdowicon"></ion-icon></a>
+                    </button>
+                    <div class="dropdow">
+                        <a th:href="@{/nation/{id}(id=${nation.nation_id})}" th:each="nation:${listnation}"  class="sub-item">
+                            <i class="fa-solid fa-circle"></i>
+                            <span th:text="${nation.nationname}" ></span>
+                        </a>
+                    </div>
+                </div>
+                <!-- end div navchil -->
+                <hr>
+                <br>
+                <div class="navchil"><a href="" class="menu"><ion-icon name="logo-facebook"></ion-icon> <p>Facebook</p> </a></div>
+                <div class="navchil"><a href="" class="menu"><ion-icon name="logo-twitter"></ion-icon> <p>Twitter</p> </a></div>
+                <div class="navchil"><a href="" class="menu"><ion-icon name="logo-google"></ion-icon> <p>Google</p> </a></div>
+                <div class="navchil" id="navchillogin"><a href="mainlogin.html" class="menu"><i class="fa-solid fa-right-to-bracket"></i></ion-icon> <p>Google</p> </a></div>
+
+                <br><br>
+                <div class="navchil"><a href="" class="menu"><ion-icon name="sunny-outline"></ion-icon><p>Dark Mode</p> </a></div>
+
+            </div>
+        </div>
+        <!-- Main view -->
+        <div class="right">
+            <!-- start main -->
+<!--            <div class="maintop">-->
+
+
+<!--                <div class="slideshow-container">-->
+
+<!--                    <div class="mySlides fade">-->
+
+<!--                        <img src="https://khenphim.com/wp-content/uploads/2018/03/Pacific-rim-2-5-banner.jpg" style="width:100%">-->
+
+<!--                    </div>-->
+
+<!--                    <div class="mySlides fade">-->
+
+<!--                        <img src="https://afamilycdn.com/2018/4/26/3372766-avengers-infinity-war-1524729983490599799489.jpg" style="width:100%">-->
+
+<!--                    </div>-->
+
+<!--                    <div class="mySlides fade">-->
+
+<!--                        <img src="https://c.wallhere.com/photos/01/44/movies_Iron_Man_2_Iron_Man_Tony_Stark_Robert_Downey_Jr_Marvel_Cinematic_Universe_movie_poster-230124.jpg!d" style="width:100%">-->
+
+<!--                    </div>-->
+
+<!--                    <div style="text-align:center;margin-top:-16px;z-index:1;">-->
+<!--                        <span class="dot"></span>-->
+<!--                        <span class="dot"></span>-->
+<!--                        <span class="dot"></span>-->
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--                &lt;!&ndash; endslidecontainer &ndash;&gt;-->
+
+
+
+<!--                <div class="gallery-item"><a href=""><div class="vietsub">HD/VietSub</div><img class="imgchil" src="https://c.wallhere.com/photos/01/44/movies_Iron_Man_2_Iron_Man_Tony_Stark_Robert_Downey_Jr_Marvel_Cinematic_Universe_movie_poster-230124.jpg!d" alt="">-->
+<!--                </a> </div>-->
+<!--                <div class="gallery-item"><a href=""><div class="vietsub">HD/VietSub</div><img class="imgchil" src="https://photo-baomoi.bmcdn.me/w700_r1/2018_10_12_329_28128973/3488b8f900bae9e4b0ab.jpg" alt="">-->
+<!--                </a> </div>-->
+<!--                <div class="gallery-item"><a href=""><div class="vietsub">HD/VietSub</div> <img class="imgchil" src="https://image.lag.vn/upload/news/18/08/30/POSTER_2B1_EIEG.jpg" alt="">-->
+<!--                </a></div>-->
+<!--                <div class="gallery-item"><a href=""><div class="vietsub">HD/VietSub</div><img class="imgchil" src="https://media.viez.vn/prod/2022/9/2/image001_11_8bd7955c12.webp" alt="">-->
+<!--                </a> </div>-->
+<!--                <div class="gallery-item"><a href=""><div class="vietsub">HD/VietSub</div><img class="imgchil" src="https://cdn.tgdd.vn/Files/2021/04/01/1339969/diem-danh-10-phim-hay-va-dang-xem-nhat-cua-chung-tu-don-202112291649184082.jpg" alt="">-->
+<!--                </a> </div>-->
+<!--                <div class="gallery-item"><a href=""><div class="vietsub">HD/VietSub</div> <img class="imgchil" src="https://www.elleman.vn/wp-content/uploads/2018/04/25/Avengers-Infinity-War-ELLE-Man-featured-01-01.jpg" alt="">-->
+<!--                </a></div>-->
+<!--                <div class="gallery-item"><a href=""><div class="vietsub">HD/VietSub</div><img class="imgchil" src="https://a-static.besthdwallpaper.com/thor-love-and-thunder-movie-textless-poster-wallpaper-2400x1350-100500_50.jpg" alt="">-->
+<!--                </a> </div>-->
+<!--                <div class="gallery-item"><a href=""> <div class="vietsub">HD/VietSub</div><img class="imgchil" src="https://bloganchoi.com/wp-content/uploads/2022/05/review-doctor-strange-2-2022.jpg" alt="">-->
+<!--                </a></div>-->
+<!--                <div class="gallery-item"><a href=""><div class="vietsub">HD/VietSub</div> <img class="imgchil" src="https://blogcdn.muaban.net/wp-content/uploads/2022/11/24024444/thu-tu-xem-phim-marvel-2.jpg" alt="">-->
+<!--                </a></div>-->
+
+
+<!--            </div>-->
+            <!-- endmaintop -->
+
+            <br><br><br><br>
+            <hr style="width: 30%;background-color: rgb(209, 203, 40);"><br>
+            <p style="color: white;font-size: 30px;font-family: 'Times New Roman', Times, serif;">PHIM MỚI NHẤT</p>
+            <div class=" " >
+                <div class="listphim" >
+                    <div class="cardfilm"  th:each="movie:${listnew}">
+                        <a th:href="@{/des/{id}(id=${movie.movie_id})}" >
+                            <div class="gallery-item"><div class="vietsub">HD/VietSub</div><img class="imgchil" th:src="${movie.image_link}" alt="">
+
+
+                                <h3 style="font-size: 25px;margin-left: 10px;" th:text="${movie.name}"></h3>
+                            </div>
+                        </a>
+                        <p  style="font-size: 15px;margin-left: 10px;color: #4f6565;" >Thời Lượng:<span th:text="${movie.time}"></span> phút </p>
+                        <p style="font-size: 15px;margin-left: 10px;color: #4f6565;">Năm: <span th:text="${movie.date_produce}"></span></p>
+                        <div class="star">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p style="font-size: 15px;margin-left: 10px;color: #4f6565;">Cập nhật <span th:text="${movie.updated_date}"></span> ngày trước</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- list phim -->
+
+                        <br><br>
+                        <!-- end 1 list phim -->
+                        <hr style="width: 30%;background-color: rgb(209, 203, 40);"><br>
+                        <p style="color: white;font-size: 30px;font-family: 'Times New Roman', Times, serif;">ANIME</p>
+
+            <!-- chen list film here -->
+
+            <!-- list phim -->
+            <div class=" " >
+                <div class="listphim" >
+                    <div class="cardfilm"  th:each="movie:${listanime}">
+                        <a th:href="@{/des/{id}(id=${movie.movie_id})}" >
+                            <div class="gallery-item"><div class="vietsub">HD/VietSub</div><img class="imgchil" th:src="${movie.image_link}" alt="">
+
+
+                                <h3 style="font-size: 25px;margin-left: 10px;" th:text="${movie.name}"></h3>
+                            </div>
+                        </a>
+                        <p  style="font-size: 15px;margin-left: 10px;color: #4f6565;" >Thời Lượng:<span th:text="${movie.time}"></span> phút </p>
+                        <p style="font-size: 15px;margin-left: 10px;color: #4f6565;">Năm: <span th:text="${movie.date_produce}"></span></p>
+                        <div class="star">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p style="font-size: 15px;margin-left: 10px;color: #4f6565;">Cập nhật <span th:text="${movie.updated_date}"></span> ngày trước</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- end list film -->
+                        <br><br>
+            <hr style="width: 30%;background-color: rgb(209, 203, 40);"><br>
+                       <p style="color: white;font-size: 30px;font-family: 'Times New Roman', Times, serif;">KHOA HỌC VIỄN TƯỞNG</p>
+
+            <!-- chen list film here -->
+            <!-- list phim -->
+            <div class=" " >
+                <div class="listphim" >
+                    <div class="cardfilm"  th:each="movie:${listkh}">
+                        <a th:href="@{/des/{id}(id=${movie.movie_id})}" >
+                            <div class="gallery-item"><div class="vietsub">HD/VietSub</div><img class="imgchil" th:src="${movie.image_link}" alt="">
+
+
+                                <h3 style="font-size: 25px;margin-left: 10px;" th:text="${movie.name}"></h3>
+                            </div>
+                        </a>
+                        <p  style="font-size: 15px;margin-left: 10px;color: #4f6565;" >Thời Lượng:<span th:text="${movie.time}"></span> phút </p>
+                        <p style="font-size: 15px;margin-left: 10px;color: #4f6565;">Năm: <span th:text="${movie.date_produce}"></span></p>
+                        <div class="star">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p style="font-size: 15px;margin-left: 10px;color: #4f6565;">Cập nhật <span th:text="${movie.updated_date}"></span> ngày trước</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- end list film -->
+
+            <br>
+
+            <div style="text-align: center; display: inline-block;display:flex ;justify-content: center;" >
+                <hr style="width: 70%;">
+            </div>
+            <!-- contact us -->
+
+
+            <div class="contactus">
+
+                <div class="information">
+                    <div class="info-chil"><i class="fa-solid fa-location-dot"></i><span>Đại học CNTT&Truyền Thông Việt Hàn</span></div>
+                    <div class="info-chil"><i class="fa-solid fa-phone"></i><span>+0972031655</span></div>
+                    <div class="info-chil"><i class="fa-solid fa-envelope"></i><span>nguyenbaoluanthai@gmail.com</span></div>
+                    <div class="info-chil"><i class="fa-brands fa-facebook"></i><span>www.facebook.com/nguyenbaoluan.thai</span> </div>
+                </div>
+                <!-- end div left -->
+
+                <div class="sendmessage">
+                    <h1 class="tiltle">Contact <span> Us</span></h1>
+                    <input type="text" placeholder="Your Name">
+                    <input type="text" placeholder="E-mail">
+                    <input type="text" placeholder="Phone">
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+                    <button id="button">Send</button>
+                </div>
+
+
+            </div>
+
+            <!-- end contact us -->
+
+
+
+
+
+
+
+        </div>
+        <!-- end right -->
+
+
+
+    </div>
+
+</div>
+
+
+
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        var dropdown = document.getElementsByClassName("sub-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+
+    <!-- js slide show -->
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 2000);
+        }
+    </script>
+
+</body>
+</html>

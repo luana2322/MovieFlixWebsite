@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title th:text="${title}"></title>
+
+    <!-- Custom fonts for this template-->
+
+</head>
+<body>
+<!-- Sidebar -->
+
+<!-- End of Sidebar -->
+<!-- Topbar -->
+<div class="top" th:fragment="topbar">
+    <img th:src="@{img/film-reel.png}" style="font-size: 30px;width: 50px;" id="logo" alt="">
+    <form method="get" th:action="@{/search}" class="search">
+        <input type="text" placeholder="Tìm kiếm phim" name="keyword">
+        <button type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </form>
+    <div class="login"><img th:src="@{https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr7uUQCPN7lnbXiGu3yjuW82-8lVqCSlsQrg&usqp=CAU}" alt=""></div>
+</div>
+<!-- End of Topbar -->
+
+</body>
+</html>

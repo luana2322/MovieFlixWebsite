@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css}"
+      integrity="sha512-GPgwaXJueHTKZgcKPNM2Pk2vZ243k70VX2Q4gStzoEZyk/olXOVqcutgypn5JV7y1j7G0gZyEnQQGyOp5t/OXQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <link rel="shortcut icon" th:href="@{/img/film-reel.png}" type="image/x-icon" />
+    <title>MovieFlix</title>
+    <link rel="stylesheet" th:href="@{/css/watchfilm.css}" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="top">
+
+       <a th:href="@{/index}"> <img
+          th:src="@{/img/film-reel.png}"
+
+          id="logo"
+          alt=""
+        /></a>
+
+      </div>
+
+      <div class="main">
+        <div class="video-container">
+          <div class="image-with-overlay">
+            <img
+              th:src="${movie.image_link}"
+              alt="https://youtu.be/C37sL4JGyhs"
+            />
+            <div class="overlay"><a th:href="@{https://youtu.be/C37sL4JGyhs}"><i class="fas fa-play-circle"></a></i></div>
+          </div>
+        </div>
+        <br />
+        <div></div>
+
+        <div class="text">
+          <h1 th:text="${movie.name}" ></h1>
+<!--          <h1 th:text="${movie.time}" ></h1>-->
+          <div class="divbutton">
+            <button id="buttonred">Server #1</button>
+            <button id="buttonblue">Server #2</button>
+          </div>
+        </div>
+        <div>
+          <br />
+        </div>
+
+        <!-- end main -->
+      </div>
+      
+          <hr style="margin: auto;width: 30%;"/>
+<br>
+      <h1 style="color: #c58560;text-align: center;">Phim Liên Quan</h1>
+      <br />
+      <hr style="width: 20%;text-align: center;margin: auto;" />
+      <div>
+
+<!--    start a list film    -->
+        <div class=" " >
+          <div class="listphim" >
+            <div class="cardfilm"  th:each="movie:${listsixmovie}">
+              <a th:href="@{/des/{id}(id=${movie.movie_id})}" >
+                <div class="gallery-item"><div class="vietsub">HD/VietSub</div><img class="imgchil" th:src="${movie.image_link}" alt="">
+
+
+                  <h3 style="font-size: 25px;margin-left: 10px;" th:text="${movie.name}"></h3>
+                </div>
+              </a>
+              <p  style="font-size: 15px;margin-left: 10px;color: #4f6565;" >Thời Lượng:<span th:text="${movie.time}"></span> phút </p>
+              <p style="font-size: 15px;margin-left: 10px;color: #4f6565;">Năm: <span th:text="${movie.date_produce}"></span></p>
+              <div class="star">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p style="font-size: 15px;margin-left: 10px;color: #4f6565;">Cập nhật <span th:text="${movie.updated_date}"></span> ngày trước</p>
+
+            </div>
+
+          </div>
+
+        </div>
+<!--  end a list film  -->
+      <!-- start contact us -->
+      <br />
+
+      <div
+        style="
+          text-align: center;
+          display: inline-block;
+          display: flex;
+          justify-content: center;
+        "
+      >
+        <hr style="width: 70%" />
+      </div>
+      <!-- contact us -->
+
+      <div class="contactus">
+        <div class="information">
+          <div class="info-chil">
+            <i class="fa-solid fa-location-dot"></i
+            ><span>129MaTranVuong,London,VietNam</span>
+          </div>
+          <div class="info-chil">
+            <i class="fa-solid fa-phone"></i><span>+123456789</span>
+          </div>
+          <div class="info-chil">
+            <i class="fa-solid fa-envelope"></i><span>film99999@gmail.com</span>
+          </div>
+          <div class="info-chil">
+            <i class="fa-brands fa-facebook"></i
+            ><span>film99999.facebook.com</span>
+          </div>
+        </div>
+        <!-- end div left -->
+
+        <div class="sendmessage">
+          <h1 class="tiltle">Contact <span> Us</span></h1>
+          <input type="text" placeholder="Your Name" />
+          <input type="text" placeholder="E-mail" />
+          <input type="text" placeholder="Phone" />
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Your Message"
+          ></textarea>
+          <button id="button">Send</button>
+        </div>
+      </div>
+
+      <!-- end contact us -->
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script type="text/javascript">
+      var dropdown = document.getElementsByClassName("sub-btn");
+      var i;
+
+      for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          var dropdownContent = this.nextElementSibling;
+          if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+          } else {
+            dropdownContent.style.display = "block";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

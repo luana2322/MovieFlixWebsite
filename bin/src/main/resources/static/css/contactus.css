@@ -1,0 +1,180 @@
+.contact {
+    display: flex;
+    background-color: #fff;
+}
+
+.left {
+    flex: 1 1 20rem;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 0;
+    justify-content: space-between;
+}
+
+.leftchil {
+    display: flex;
+    align-items: center;
+}
+
+.leftchil ion-icon {
+    margin-right: 15px;
+    font-size: 4rem;
+    color: #1AAB8A;
+}
+
+.left p {
+    text-transform: none;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+p {
+    font-size: 2rem;
+}
+
+.right {
+    flex: 1 1 20rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    background-color: #C5CBD3;
+    gap: 2rem;
+}
+
+input {
+    border: solid 1px #DEDEDE;
+    height: 3em;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+.in {
+    display: flex;
+    justify-content: space-between;
+}
+
+.in input {
+    width: 48%;
+}
+
+textarea {
+    border: solid 1px #DEDEDE;
+    height: 10em;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+button {
+    font-weight: 600;
+    background: #fff;
+    color: #1AAB8A;
+    border: none;
+    position: relative;
+    font-size: 1.6em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    width: 30%;
+    border: 1px solid #1AAB8A;
+}
+
+button:hover {
+    background: #1AAB8A;
+    color: #fff;
+}
+
+button:before,
+button:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #1AAB8A;
+    transition: 400ms ease all;
+}
+
+button:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+@media screen and (max-width:768px) {
+    .map {
+        padding: 50px 0px;
+        pointer-events: none
+    }
+
+    .contact {
+        display: grid;
+        grid-template-columns: 1fr;
+        position: relative;
+        z-index: 2;
+    }
+
+    .footer {
+        position: relative;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width:600px) {
+
+    .heading h1 {
+        font-size: 5rem;
+    }
+
+    .heading-title {
+        font-size: 4rem;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .heading h1 {
+        font-size: 4.5rem;
+    }
+}
+
+@media screen and (max-width:450px) {
+    html {
+        font-size: 50%;
+    }
+
+    .heading h1 {
+        font-size: 4.25rem;
+    }
+
+}
+
+@media screen and (max-width:360px) {
+    .heading h1 {
+        font-size: 3.25rem;
+    }
+
+    .heading-title {
+        font-size: 2.75rem;
+    }
+
+    .about .content h3 {
+        font-size: 3.5rem;
+    }
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    0% {
+        transform: scale(.5);
+        opacity: 0;
+    }
+}
